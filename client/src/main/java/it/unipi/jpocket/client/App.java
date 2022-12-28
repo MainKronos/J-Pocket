@@ -29,6 +29,9 @@ public class App extends Application {
 		stage.setTitle("J-Pocket");
 		stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/coin.png")));
         stage.show();
+		stage.sizeToScene();
+		stage.setMinWidth(stage.getWidth());
+        stage.setMinHeight(stage.getHeight());
     }
 
     public static void main(String[] args) {
