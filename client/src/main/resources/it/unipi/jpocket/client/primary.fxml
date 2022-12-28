@@ -25,7 +25,7 @@
         <rowConstraints>
           <RowConstraints maxHeight="110.0" minHeight="110.0" prefHeight="110.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <VBox spacing="10.0" styleClass="card" GridPane.columnSpan="2147483647">
@@ -37,7 +37,7 @@
                               <Font name="Roboto" size="38.0" />
                            </font>
                         </Text>
-                        <Text fx:id="fx_user" fill="#9fa8da" strokeType="OUTSIDE" strokeWidth="0.0" text="User">
+                        <Text fx:id="txt_user" fill="#9fa8da" strokeType="OUTSIDE" strokeWidth="0.0" text="User">
                            <font>
                               <Font name="Roboto" size="38.0" />
                            </font>
@@ -68,7 +68,7 @@
                               <Insets />
                            </HBox.margin>
                         </SVGPath>
-                        <Text fill="ROYALBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                        <Text fx:id="txt_balance" fill="ROYALBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -98,7 +98,7 @@
                            <HBox.margin>
                               <Insets />
                            </HBox.margin></SVGPath>
-                        <Text fill="#3f8600" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                        <Text fx:id="txt_income" fill="#3f8600" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -117,7 +117,7 @@
             </VBox>
             <VBox prefHeight="100.0" prefWidth="200.0" styleClass="card" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <Text fill="#7e7e7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Expenses">
+                  <Text fill="#7e7e7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Expense">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font>
@@ -128,7 +128,7 @@
                            <HBox.margin>
                               <Insets />
                            </HBox.margin></SVGPath>
-                        <Text fill="#cf1322" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                        <Text fx:id="txt_expense" fill="#cf1322" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
                            <font>
                               <Font size="24.0" />
                            </font>

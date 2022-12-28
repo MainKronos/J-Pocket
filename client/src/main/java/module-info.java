@@ -3,7 +3,7 @@ module it.unipi.jpocket.client {
     requires javafx.fxml;
 
 	requires transitive javafx.graphics;
-	requires java.logging;
+	requires transitive java.logging;
 
     opens it.unipi.jpocket.client to javafx.fxml;
     exports it.unipi.jpocket.client;
