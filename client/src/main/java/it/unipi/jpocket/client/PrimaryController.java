@@ -16,17 +16,17 @@ import javafx.scene.text.Text;
 
 public class PrimaryController implements Initializable{
 
-	@FXML public Text txt_user;
-	@FXML public Text txt_balance;
-	@FXML public Text txt_income;
-	@FXML public Text txt_expense;
-	@FXML public TableView<Transaction> TransactionTable;
-	@FXML public TableColumn<Transaction,String> TitleCol;
-	@FXML public TableColumn<Transaction,Float> AmountCol;
-	@FXML public TableColumn<Transaction,Date> DateCol;
-	@FXML public TableColumn<Transaction,InOutType> TypeCol;
+	@FXML private Text txt_user;
+	@FXML private Text txt_balance;
+	@FXML private Text txt_income;
+	@FXML private Text txt_expense;
+	@FXML private TableView<Transaction> TransactionTable;
+	@FXML private TableColumn<Transaction,String> TitleCol;
+	@FXML private TableColumn<Transaction,Float> AmountCol;
+	@FXML private TableColumn<Transaction,Date> DateCol;
+	@FXML private TableColumn<Transaction,InOutType> TypeCol;
 
-	public final ObservableList<Transaction> data = FXCollections.observableArrayList();
+	private final ObservableList<Transaction> data = FXCollections.observableArrayList();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
