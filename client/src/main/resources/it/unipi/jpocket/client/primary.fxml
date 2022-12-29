@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
@@ -19,144 +22,170 @@
 
 <AnchorPane minHeight="810.0" minWidth="739.0" stylesheets="@assets/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.jpocket.client.PrimaryController">
    <children>
-      <GridPane alignment="CENTER" hgap="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" percentWidth="33.33" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" percentWidth="33.33" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" percentWidth="33.33" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="110.0" minHeight="110.0" prefHeight="110.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
-         </rowConstraints>
-         <children>
-            <VBox spacing="10.0" styleClass="card" GridPane.columnSpan="2147483647">
+      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <GridPane alignment="CENTER" hgap="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="50.0" BorderPane.alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" percentWidth="33.33" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" percentWidth="33.33" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" percentWidth="33.33" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="110.0" minHeight="110.0" prefHeight="110.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+               </rowConstraints>
                <children>
-                  <TextFlow>
+                  <VBox spacing="10.0" styleClass="card" GridPane.columnSpan="2147483647">
                      <children>
-                        <Text fill="#a1a1a1" lineSpacing="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi ">
+                        <TextFlow>
+                           <children>
+                              <Text fill="#a1a1a1" lineSpacing="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi ">
+                                 <font>
+                                    <Font name="Roboto" size="38.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="txt_user" fill="#9fa8da" strokeType="OUTSIDE" strokeWidth="0.0" text="User">
+                                 <font>
+                                    <Font name="Roboto" size="38.0" />
+                                 </font>
+                                 <effect>
+                                    <Glow level="1.0" />
+                                 </effect>
+                              </Text>
+                           </children>
+                        </TextFlow>
+                        <Text fill="#a1a1a1" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back to your Money Manager">
                            <font>
-                              <Font name="Roboto" size="38.0" />
+                              <Font name="Roboto" size="24.0" />
                            </font>
-                        </Text>
-                        <Text fx:id="txt_user" fill="#9fa8da" strokeType="OUTSIDE" strokeWidth="0.0" text="User">
-                           <font>
-                              <Font name="Roboto" size="38.0" />
-                           </font>
-                           <effect>
-                              <Glow level="1.0" />
-                           </effect>
                         </Text>
                      </children>
-                  </TextFlow>
-                  <Text fill="#a1a1a1" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back to your Money Manager">
-                     <font>
-                        <Font name="Roboto" size="24.0" />
-                     </font>
-                  </Text>
-               </children>
-            </VBox>
-            <VBox styleClass="card" GridPane.rowIndex="1">
-               <children>
-                  <Text fill="#7e7e7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Balance">
-                     <font>
-                        <Font name="Roboto" size="14.0" />
-                     </font>
-                  </Text>
-                  <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0">
+                  </VBox>
+                  <VBox styleClass="card" GridPane.rowIndex="1">
                      <children>
-                        <SVGPath content="M 3.2 0 C 1.435 0 0 1.435 0 3.2 V 20.8 c 0 1.765 1.435 3.2 3.2 3.2 H 4 l 0.8 1.6 h 3.2 l 0.8 -1.6 H 20 l 0.8 1.6 h 3.2 l 0.8 -1.6 h 0.8 c 1.765 0 3.2 -1.435 3.2 -3.2 V 3.2 c 0 -1.765 -1.435 -3.2 -3.2 -3.2 H 3.2 z M 11.2 16 c 2.21 0 4 -1.79 4 -4 s -1.79 -4 -4 -4 s -4 1.79 -4 4 s 1.79 4 4 4 z m 0 4 c -4.42 0 -8 -3.58 -8 -8 s 3.58 -8 8 -8 s 8 3.58 8 8 s -3.58 8 -8 8 z M 24 11.065 V 16.8 c 0 0.44 -0.36 0.8 -0.8 0.8 s -0.8 -0.36 -0.8 -0.8 V 11.065 c -0.93 -0.33 -1.6 -1.22 -1.6 -2.265 c 0 -1.325 1.075 -2.4 2.4 -2.4 s 2.4 1.075 2.4 2.4 c 0 1.045 -0.67 1.935 -1.6 2.265 z" fill="ROYALBLUE">
-                           <HBox.margin>
+                        <Text fill="#7e7e7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Balance">
+                           <font>
+                              <Font name="Roboto" size="14.0" />
+                           </font>
+                        </Text>
+                        <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0">
+                           <children>
+                              <SVGPath content="M 3.2 0 C 1.435 0 0 1.435 0 3.2 V 20.8 c 0 1.765 1.435 3.2 3.2 3.2 H 4 l 0.8 1.6 h 3.2 l 0.8 -1.6 H 20 l 0.8 1.6 h 3.2 l 0.8 -1.6 h 0.8 c 1.765 0 3.2 -1.435 3.2 -3.2 V 3.2 c 0 -1.765 -1.435 -3.2 -3.2 -3.2 H 3.2 z M 11.2 16 c 2.21 0 4 -1.79 4 -4 s -1.79 -4 -4 -4 s -4 1.79 -4 4 s 1.79 4 4 4 z m 0 4 c -4.42 0 -8 -3.58 -8 -8 s 3.58 -8 8 -8 s 8 3.58 8 8 s -3.58 8 -8 8 z M 24 11.065 V 16.8 c 0 0.44 -0.36 0.8 -0.8 0.8 s -0.8 -0.36 -0.8 -0.8 V 11.065 c -0.93 -0.33 -1.6 -1.22 -1.6 -2.265 c 0 -1.325 1.075 -2.4 2.4 -2.4 s 2.4 1.075 2.4 2.4 c 0 1.045 -0.67 1.935 -1.6 2.265 z" fill="ROYALBLUE">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </SVGPath>
+                              <Text fx:id="txt_balance" fill="ROYALBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
                               <Insets />
-                           </HBox.margin>
-                        </SVGPath>
-                        <Text fx:id="txt_balance" fill="ROYALBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
+                           </VBox.margin>
+                        </HBox>
                      </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
-               </children>
-            </VBox>
-            <VBox prefHeight="100.0" prefWidth="200.0" styleClass="card" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <children>
-                  <Text fill="#7e7e7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Income">
-                     <font>
-                        <Font name="Roboto" size="14.0" />
-                     </font>
-                  </Text>
-                  <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0">
+                  </VBox>
+                  <VBox prefHeight="100.0" prefWidth="200.0" styleClass="card" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <SVGPath content="M 10.73 2.07 c -0.625 -0.625 -1.64 -0.625 -2.265 0 l -8 8 c -0.625 0.625 -0.625 1.64 0 2.265 s 1.64 0.625 2.265 0 L 8 7.06 V 22.4 c 0 0.885 0.715 1.6 1.6 1.6 s 1.6 -0.715 1.6 -1.6 V 7.06 L 16.47 12.33 c 0.625 0.625 1.64 0.625 2.265 0 s 0.625 -1.64 0 -2.265 l -8 -8 z" fill="#3f8600">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </SVGPath>
-                        <Text fx:id="txt_income" fill="#3f8600" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
+                        <Text fill="#7e7e7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Income">
                            <font>
-                              <Font size="24.0" />
+                              <Font name="Roboto" size="14.0" />
                            </font>
                         </Text>
+                        <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0">
+                           <children>
+                              <SVGPath content="M 10.73 2.07 c -0.625 -0.625 -1.64 -0.625 -2.265 0 l -8 8 c -0.625 0.625 -0.625 1.64 0 2.265 s 1.64 0.625 2.265 0 L 8 7.06 V 22.4 c 0 0.885 0.715 1.6 1.6 1.6 s 1.6 -0.715 1.6 -1.6 V 7.06 L 16.47 12.33 c 0.625 0.625 1.64 0.625 2.265 0 s 0.625 -1.64 0 -2.265 l -8 -8 z" fill="#3f8600">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </SVGPath>
+                              <Text fx:id="txt_income" fill="#3f8600" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
                      </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
-               </children>
-            </VBox>
-            <VBox prefHeight="100.0" prefWidth="200.0" styleClass="card" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <children>
-                  <Text fill="#7e7e7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Expense">
-                     <font>
-                        <Font name="Roboto" size="14.0" />
-                     </font>
-                  </Text>
-                  <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0">
+                  </VBox>
+                  <VBox prefHeight="100.0" prefWidth="200.0" styleClass="card" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
-                        <SVGPath content="M 8.47 23.53 c 0.625 0.625 1.64 0.625 2.265 0 l 8 -8 c 0.625 -0.625 0.625 -1.64 0 -2.265 s -1.64 -0.625 -2.265 0 L 11.2 18.54 L 11.2 3.2 c 0 -0.885 -0.715 -1.6 -1.6 -1.6 s -1.6 0.715 -1.6 1.6 l 0 15.335 L 2.73 13.27 c -0.625 -0.625 -1.64 -0.625 -2.265 0 s -0.625 1.64 0 2.265 l 8 8 z" fill="#cf1322">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </SVGPath>
-                        <Text fx:id="txt_expense" fill="#cf1322" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
+                        <Text fill="#7e7e7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Expense">
                            <font>
-                              <Font size="24.0" />
+                              <Font name="Roboto" size="14.0" />
                            </font>
                         </Text>
+                        <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0">
+                           <children>
+                              <SVGPath content="M 8.47 23.53 c 0.625 0.625 1.64 0.625 2.265 0 l 8 -8 c 0.625 -0.625 0.625 -1.64 0 -2.265 s -1.64 -0.625 -2.265 0 L 11.2 18.54 L 11.2 3.2 c 0 -0.885 -0.715 -1.6 -1.6 -1.6 s -1.6 0.715 -1.6 1.6 l 0 15.335 L 2.73 13.27 c -0.625 -0.625 -1.64 -0.625 -2.265 0 s -0.625 1.64 0 2.265 l 8 8 z" fill="#cf1322">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </SVGPath>
+                              <Text fx:id="txt_expense" fill="#cf1322" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
                      </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
+                  </VBox>
+                  <TableView fx:id="TransactionTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
+                     <columns>
+                        <TableColumn fx:id="TitleCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" resizable="false" text="Title" />
+                        <TableColumn fx:id="AmountCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" resizable="false" text="Amount" />
+                        <TableColumn fx:id="DateCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" resizable="false" text="Date" />
+                        <TableColumn fx:id="TypeCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" resizable="false" text="Type" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <contextMenu>
+                        <ContextMenu>
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#removeItem" text="Remove" />
+                          </items>
+                        </ContextMenu>
+                     </contextMenu>
+                  </TableView>
                </children>
-            </VBox>
-            <TableView fx:id="TransactionTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
-               <columns>
-                  <TableColumn fx:id="TitleCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" resizable="false" text="Title" />
-                  <TableColumn fx:id="AmountCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" resizable="false" text="Amount" />
-                  <TableColumn fx:id="DateCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" resizable="false" text="Date" />
-                  <TableColumn fx:id="TypeCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" resizable="false" text="Type" />
-               </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-               <contextMenu>
-                  <ContextMenu>
-                    <items>
-                      <MenuItem mnemonicParsing="false" onAction="#removeItem" text="Remove" />
-                    </items>
-                  </ContextMenu>
-               </contextMenu>
-            </TableView>
-         </children>
-         <padding>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-         </padding>
-      </GridPane>
+               <padding>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+               </padding>
+            </GridPane>
+         </center>
+         <bottom>
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <Pane maxHeight="60.0" minHeight="60.0" prefHeight="60.0" styleClass="card" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <VBox alignment="TOP_CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button mnemonicParsing="false" styleClass="add-btn">
+                           <font>
+                              <Font name="Roboto" size="40.0" />
+                           </font>
+                           <graphic>
+                              <SVGPath content="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z" fill="#121212" />
+                           </graphic>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
    </children>
 </AnchorPane>

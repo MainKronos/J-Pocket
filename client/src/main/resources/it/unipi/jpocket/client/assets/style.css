@@ -88,3 +88,15 @@
     -fx-background-color:#212121;
     -fx-border-color:#303030;
 } 
+
+.add-btn{
+	-fx-background-color: #9FA8DA;
+	-fx-background-radius: 50%;
+	-fx-border-radius: 50%;
+	-fx-border-width: 0;
+	-fx-max-width: 70;
+	-fx-max-height: 70;
+	-fx-min-width: 70;
+	-fx-min-height: 70;
+
+}
