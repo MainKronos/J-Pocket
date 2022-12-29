@@ -3,6 +3,7 @@ package it.unipi.jpocket.client.transaction;
 public class Currency extends Number{
 
 	public static final Currency ZERO = new Currency(0);
+	public static final Currency MAX_VALUE = new Currency(Float.MAX_VALUE);
 
 	private final float amount;
 	public Currency(float amount) {

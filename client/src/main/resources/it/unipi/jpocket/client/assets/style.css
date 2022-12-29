@@ -17,6 +17,13 @@
 	-fx-padding: 15;
 }
 
+.label{
+	-fx-text-fill: #a1a1a1;
+	-fx-font-weight: bold;
+	-fx-font-size: 16px;
+	-fx-font-family: "Roboto";
+}
+
 .table-view{
     -fx-background-color: #212121;
 	-fx-border-width: 1;
@@ -98,5 +105,8 @@
 	-fx-max-height: 70;
 	-fx-min-width: 70;
 	-fx-min-height: 70;
+}
 
+.modal {
+	-fx-background-color: rgba(0, 0, 0, 0.5);
 }

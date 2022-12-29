@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -45,7 +52,7 @@
                                     <Font name="Roboto" size="38.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="txt_user" fill="#9fa8da" strokeType="OUTSIDE" strokeWidth="0.0" text="User">
+                              <Text fx:id="userTxt" fill="#9fa8da" strokeType="OUTSIDE" strokeWidth="0.0" text="User">
                                  <font>
                                     <Font name="Roboto" size="38.0" />
                                  </font>
@@ -76,7 +83,7 @@
                                     <Insets />
                                  </HBox.margin>
                               </SVGPath>
-                              <Text fx:id="txt_balance" fill="ROYALBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
+                              <Text fx:id="balanceTxt" fill="ROYALBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -102,7 +109,7 @@
                                     <Insets />
                                  </HBox.margin>
                               </SVGPath>
-                              <Text fx:id="txt_income" fill="#3f8600" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
+                              <Text fx:id="incomeTxt" fill="#3f8600" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -128,7 +135,7 @@
                                     <Insets />
                                  </HBox.margin>
                               </SVGPath>
-                              <Text fx:id="txt_expense" fill="#cf1322" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
+                              <Text fx:id="expenseTxt" fill="#cf1322" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -170,13 +177,16 @@
                   <Pane maxHeight="60.0" minHeight="60.0" prefHeight="60.0" styleClass="card" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                   <VBox alignment="TOP_CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button mnemonicParsing="false" styleClass="add-btn">
+                        <Button mnemonicParsing="false" onAction="#openModal" styleClass="add-btn">
                            <font>
                               <Font name="Roboto" size="40.0" />
                            </font>
                            <graphic>
                               <SVGPath content="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z" fill="#121212" />
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                      </children>
                      <padding>
@@ -187,5 +197,40 @@
             </AnchorPane>
          </bottom>
       </BorderPane>
+      <VBox fx:id="modal" alignment="CENTER" fillWidth="false" styleClass="modal" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <GridPane hgap="10.0" styleClass="card" vgap="10.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="NEVER" />
+              </rowConstraints>
+               <children>
+                  <Label text="Title" />
+                  <TextField fx:id="titleInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
+                  <Label text="Amount" GridPane.rowIndex="1" />
+                  <Spinner fx:id="amountInput" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Date" GridPane.rowIndex="2" />
+                  <DatePicker fx:id="dateInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Label" GridPane.rowIndex="3" />
+                  <ChoiceBox fx:id="typeInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Separator prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="4" />
+                  <HBox alignment="CENTER" spacing="50.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="5">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#closeModal" text="Cancel" />
+                        <Button mnemonicParsing="false" text="Submit" />
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

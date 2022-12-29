@@ -55,6 +55,12 @@ public class TransactionList extends SimpleListProperty<Transaction>{
 		return super.remove(elm);
 	}
 
+	@Override
+	public boolean add(Transaction elm) {
+		super.add(0,elm);
+		return true;
+	}
+
 	public SimpleObjectProperty<Currency> balanceProperty() {
 		return balance;
 	}
