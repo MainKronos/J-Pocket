@@ -1,4 +1,4 @@
-package it.unipi.jpocket.client;
+package it.unipi.jpocket.client.transaction;
 
 public enum InOutType {
 	INCOME, EXPENSE;

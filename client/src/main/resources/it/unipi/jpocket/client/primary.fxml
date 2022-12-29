@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Glow?>
@@ -69,12 +71,7 @@
                               <Insets />
                            </HBox.margin>
                         </SVGPath>
-                        <Text fx:id="txt_balance" fill="ROYALBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Text fill="ROYALBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="€" textOrigin="CENTER">
+                        <Text fx:id="txt_balance" fill="ROYALBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -100,12 +97,7 @@
                               <Insets />
                            </HBox.margin>
                         </SVGPath>
-                        <Text fx:id="txt_income" fill="#3f8600" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#3f8600" strokeType="OUTSIDE" strokeWidth="0.0" text="€">
+                        <Text fx:id="txt_income" fill="#3f8600" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -131,12 +123,7 @@
                               <Insets />
                            </HBox.margin>
                         </SVGPath>
-                        <Text fx:id="txt_expense" fill="#cf1322" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#cf1322" strokeType="OUTSIDE" strokeWidth="0.0" text="€">
+                        <Text fx:id="txt_expense" fill="#cf1322" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00 €">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -158,6 +145,13 @@
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#removeItem" text="Remove" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
             </TableView>
          </children>
          <padding>

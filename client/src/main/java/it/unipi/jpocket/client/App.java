@@ -18,7 +18,7 @@ public class App extends Application {
 
     private static Scene scene;
 
-	public static final Logger LOGGER = Logger.getLogger("DungeonArchitect");
+	public static final Logger LOGGER = Logger.getLogger("J-Pocket");
 	static {LOGGER.setLevel(Level.FINE);for (Handler handler : Logger.getLogger("").getHandlers()) {handler.setLevel(Level.ALL);}}
 
     @Override

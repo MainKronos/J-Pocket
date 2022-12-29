@@ -4,9 +4,7 @@ import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import javafx.beans.binding.Bindings;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import it.unipi.jpocket.client.transaction.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -26,7 +24,7 @@ public class PrimaryController implements Initializable{
 	@FXML private TableColumn<Transaction,Date> DateCol;
 	@FXML private TableColumn<Transaction,InOutType> TypeCol;
 
-	private final ObservableList<Transaction> data = FXCollections.observableArrayList();
+	private final TransactionList data = new TransactionList();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -51,52 +49,14 @@ public class PrimaryController implements Initializable{
 		TypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
 		TransactionTable.setItems(data);
 
-		txt_balance.textProperty().bind(
-			Bindings.format("%.2f", 
-				Bindings.createFloatBinding(
-					() -> data
-					.stream()
-					.parallel()
-					.reduce(0f, (acc, t) -> acc + t.getAmount().floatValue() * (t.getType() == InOutType.INCOME ? 1 : -1), Float::sum),
-					data
-				)
-			)
-		);
+		txt_balance.textProperty().bind(data.balanceProperty().asString());
+		txt_income.textProperty().bind(data.incomProperty().asString());
+		txt_expense.textProperty().bind(data.expenseProperty().asString());
 
-		txt_income.textProperty().bind(
-			Bindings.format("%.2f", 
-				Bindings.createFloatBinding(
-					() -> data
-					.stream()
-					.parallel()
-					.filter(t -> t.getType() == InOutType.INCOME)
-					.reduce(0f, (acc, t) -> acc + t.getAmount().floatValue(), Float::sum),
-					data
-				)
-			)
-		);
+	}
 
-		txt_expense.textProperty().bind(
-			Bindings.format("%.2f", 
-				Bindings.createFloatBinding(
-					() -> data
-					.stream()
-					.parallel()
-					.filter(t -> t.getType() == InOutType.EXPENSE)
-					.reduce(0f, (acc, t) -> acc + t.getAmount().floatValue(), Float::sum),
-					data
-				)
-			)
-		);
-
-		for(int i=0; i<4; i++)
-			data.add(new Transaction());
-
-		/* data.addAll(
-			new Transaction("Cena", 20.00f, new Date(), InOutType.EXPENSE),
-			new Transaction("Vacanza", 120.00f, new Date(), InOutType.EXPENSE),
-			new Transaction("Stipendio", 1000.00f, new Date(), InOutType.INCOME)
-		); */
-
+	@FXML
+	public void removeItem() {
+		data.remove(TransactionTable.getSelectionModel().getSelectedItem());
 	}
 }
