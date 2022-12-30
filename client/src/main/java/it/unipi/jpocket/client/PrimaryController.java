@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import it.unipi.jpocket.client.transaction.*;
-import javafx.beans.property.ObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
@@ -68,33 +67,8 @@ public class PrimaryController implements Initializable{
 		incomeTxt.textProperty().bind(data.incomProperty().asString());
 		expenseTxt.textProperty().bind(data.expenseProperty().asString());
 
-		SpinnerValueFactory<Currency> valueFactory = new SpinnerValueFactory<Currency>() {
-			@Override
-			public void decrement(int val) {
-				setValue(Currency.subtract(getValue(), new Currency(val*0.01f)));
-			}
-			@Override
-			public void increment(int val) {
-				setValue(Currency.sum(getValue(), new Currency(val*0.01f)));
-			}
-		};
-		valueFactory.setValue(Currency.ZERO);
-		valueFactory.setConverter(new StringConverter<Currency>() {
-			@Override
-			public String toString(Currency object) {
-				return object.toString();
-			}
-			@Override
-			public Currency fromString(String string) {
-				try {
-					return new Currency(Float.parseFloat(string.replace(',', '.').replaceAll("[^0-9\\.]", "")));	
-				} catch (NumberFormatException e) {
-					return Currency.ZERO;
-				}			
-			}
-		});
-
-		amountInput.setValueFactory(valueFactory);
+		amountInput.setValueFactory(Currency.valueFactory);
+		typeInput.getItems().addAll(InOutType.values());
 
 	}
 
@@ -120,6 +94,16 @@ public class PrimaryController implements Initializable{
 	@FXML
 	public void addItem() {
 
-		data.add(new Transaction("Test", 10, new Date(), InOutType.INCOME));
+		if(titleInput.getText().isEmpty() || amountInput.getValue().equals(Currency.ZERO) || dateInput.getValue() == null || typeInput.getValue() == null)
+			return;
+
+		data.add(new Transaction(
+			titleInput.getText(),
+			amountInput.getValue(),
+			dateInput.getValue(),
+			typeInput.getValue()
+		));
+
+		closeModal();
 	}
 }

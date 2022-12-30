@@ -2,11 +2,19 @@
     src: url('Roboto.ttf');
 }
 
+* {
+	-fx-font-family: "Roboto";
+	-fx-primary-color: #9FA8DA;
+	-fx-secondary-color: #212121;
+	-fx-light-grey-color: #a1a1a1;
+	-fx-base: #212121;
+}
+
 .root {
 	-fx-background-color: #121212;
 	-fx-font-family: "Roboto";
-	-fx-base: #212121;
 }
+
 
 .card {
 	-fx-background-color: #212121;
@@ -109,4 +117,78 @@
 
 .modal {
 	-fx-background-color: rgba(0, 0, 0, 0.5);
+}
+
+.text-field {
+	-fx-background-color: #212121;
+	-fx-text-fill: #a1a1a1;
+	-fx-font-size: 16px;
+	-fx-font-family: "Roboto";
+	-fx-background-radius: 4;
+	-fx-border-radius: 4;
+	-fx-border-color: #303030;
+	-fx-border-width: 1;
+	-fx-padding: 5;
+}
+
+.text-field:active, .text-field:focused, .text-field:hover,
+.spinner, .date-picker {
+	-fx-background-color: #212121;
+	-fx-text-fill: #a1a1a1;
+	-fx-font-size: 16px;
+	-fx-font-family: "Roboto";
+	-fx-background-radius: 4;
+	-fx-border-radius: 4;
+	-fx-border-color: #303030;
+	-fx-border-width: 1;
+}
+
+.increment-arrow-button, .decrement-arrow-button {
+	-fx-background-color: -fx-secondary-color;
+	-fx-text-fill: #a1a1a1;
+	-fx-font-size: 12px;
+	cursor: hand;
+}
+
+.date-picker .arrow-button {
+	-fx-background-color: -fx-secondary-color;
+	-fx-background-radius: 0;
+}
+.date-picker .arrow-button:hover {
+	-fx-background-color: -fx-secondary-color;
+}
+.date-picker .arrow-button .arrow {
+	-fx-background-color: white;
+}
+.date-picker .cell {
+	-fx-background-color: -fx-secondary-color;
+	-fx-border-color: #303030;
+	-fx-text-fill: -fx-light-grey-color;
+}
+.date-picker .cell:hover {
+	-fx-border-color: #303030;
+	-fx-text-fill: white;
+}
+.date-picker .cell:focused {
+	-fx-border-color: #303030;
+	-fx-text-fill: -fx-primary-color;
+}
+.date-picker .selected {
+	-fx-border-color: -fx-primary-color;
+	-fx-text-fill: -fx-primary-color;
+}
+.date-picker .selected:focused {
+	-fx-border-color: -fx-primary-color;
+	-fx-text-fill: -fx-primary-color;
+}
+
+.date-picker-popup .month-year-pane {
+	-fx-background-color: -fx-secondary-color;
+}
+.date-picker-popup .month-year-pane .label {
+	-fx-text-fill: -fx-light-grey-color;
+}
+.date-picker-popup .spinner .button .left-arrow,
+.date-picker-popup .spinner .button .right-arrow {
+	-fx-background-color: white;
 }

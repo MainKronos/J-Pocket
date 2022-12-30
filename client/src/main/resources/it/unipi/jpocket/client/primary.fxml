@@ -197,7 +197,7 @@
             </AnchorPane>
          </bottom>
       </BorderPane>
-      <VBox fx:id="modal" alignment="CENTER" fillWidth="false" styleClass="modal" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="modal" alignment="CENTER" fillWidth="false" styleClass="modal" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <GridPane hgap="10.0" styleClass="card" vgap="10.0">
               <columnConstraints>
@@ -225,7 +225,7 @@
                   <HBox alignment="CENTER" spacing="50.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="5">
                      <children>
                         <Button mnemonicParsing="false" onAction="#closeModal" text="Cancel" />
-                        <Button mnemonicParsing="false" text="Submit" />
+                        <Button mnemonicParsing="false" onAction="#addItem" text="Submit" />
                      </children>
                   </HBox>
                </children>
