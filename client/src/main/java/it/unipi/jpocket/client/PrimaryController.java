@@ -10,14 +10,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.util.StringConverter;
 
 public class PrimaryController implements Initializable{
 
@@ -25,6 +25,8 @@ public class PrimaryController implements Initializable{
 	@FXML private Text balanceTxt;
 	@FXML private Text incomeTxt;
 	@FXML private Text expenseTxt;
+
+	@FXML private BorderPane gui;
 
 	@FXML private VBox modal;
 	@FXML private TextField titleInput;
@@ -45,7 +47,7 @@ public class PrimaryController implements Initializable{
 
 		App.LOGGER.info("Start");
 
-		userTxt.setText("MainKronos");
+		userTxt.textProperty().bind(App.user);
 
 		TitleCol.prefWidthProperty().bind(TransactionTable.widthProperty().multiply(1/3f));
 		AmountCol.prefWidthProperty().bind(TransactionTable.widthProperty().multiply(1/8f));
@@ -69,6 +71,7 @@ public class PrimaryController implements Initializable{
 
 		amountInput.setValueFactory(Currency.valueFactory);
 		typeInput.getItems().addAll(InOutType.values());
+		dateInput.setShowWeekNumbers(false);
 
 	}
 
@@ -79,6 +82,7 @@ public class PrimaryController implements Initializable{
 
 	@FXML
 	public void openModal(){
+		gui.setEffect(new BoxBlur());
 		modal.setVisible(true);
 	}
 
@@ -89,6 +93,7 @@ public class PrimaryController implements Initializable{
 		amountInput.getValueFactory().setValue(Currency.ZERO);
 		dateInput.setValue(null);
 		typeInput.setValue(null);
+		gui.setEffect(null);
 	}
 
 	@FXML

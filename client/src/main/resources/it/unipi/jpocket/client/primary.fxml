@@ -29,7 +29,7 @@
 
 <AnchorPane minHeight="810.0" minWidth="739.0" stylesheets="@assets/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.jpocket.client.PrimaryController">
    <children>
-      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="gui" minHeight="810.0" minWidth="739.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <GridPane alignment="CENTER" hgap="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="50.0" BorderPane.alignment="CENTER">
                <columnConstraints>
@@ -182,7 +182,7 @@
                               <Font name="Roboto" size="40.0" />
                            </font>
                            <graphic>
-                              <SVGPath content="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z" fill="#121212" />
+                              <SVGPath content="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z" fill="#121212" strokeLineCap="ROUND" strokeLineJoin="ROUND" />
                            </graphic>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -197,7 +197,7 @@
             </AnchorPane>
          </bottom>
       </BorderPane>
-      <VBox fx:id="modal" alignment="CENTER" fillWidth="false" styleClass="modal" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="modal" alignment="CENTER" fillWidth="false" styleClass="modal" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <GridPane hgap="10.0" styleClass="card" vgap="10.0">
               <columnConstraints>
@@ -224,8 +224,14 @@
                   <Separator prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="4" />
                   <HBox alignment="CENTER" spacing="50.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="5">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#closeModal" text="Cancel" />
-                        <Button mnemonicParsing="false" onAction="#addItem" text="Submit" />
+                        <Button mnemonicParsing="false" onAction="#closeModal" styleClass="mybutton" text="Cancel">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button mnemonicParsing="false" onAction="#addItem" styleClass="mybutton" text="Submit">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                </children>

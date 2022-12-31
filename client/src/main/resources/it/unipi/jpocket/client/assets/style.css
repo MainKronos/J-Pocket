@@ -105,7 +105,8 @@
 } 
 
 .add-btn{
-	-fx-background-color: #9FA8DA;
+	-fx-background-color: -fx-primary-color;
+	-fx-border-width: 0;
 	-fx-background-radius: 50%;
 	-fx-border-radius: 50%;
 	-fx-border-width: 0;
@@ -114,6 +115,11 @@
 	-fx-min-width: 70;
 	-fx-min-height: 70;
 }
+.add-btn:hover {
+	-fx-background-radius: 45%;
+	-fx-border-radius: 45%;
+}
+	
 
 .modal {
 	-fx-background-color: rgba(0, 0, 0, 0.5);
@@ -132,7 +138,7 @@
 }
 
 .text-field:active, .text-field:focused, .text-field:hover,
-.spinner, .date-picker {
+.text-field .spinner, .date-picker, .date-picker .spinner {
 	-fx-background-color: #212121;
 	-fx-text-fill: #a1a1a1;
 	-fx-font-size: 16px;
@@ -153,6 +159,7 @@
 .date-picker .arrow-button {
 	-fx-background-color: -fx-secondary-color;
 	-fx-background-radius: 0;
+	-fx-cursor: hand;
 }
 .date-picker .arrow-button:hover {
 	-fx-background-color: -fx-secondary-color;
@@ -164,6 +171,7 @@
 	-fx-background-color: -fx-secondary-color;
 	-fx-border-color: #303030;
 	-fx-text-fill: -fx-light-grey-color;
+	-fx-cursor: hand;
 }
 .date-picker .cell:hover {
 	-fx-border-color: #303030;
@@ -188,7 +196,39 @@
 .date-picker-popup .month-year-pane .label {
 	-fx-text-fill: -fx-light-grey-color;
 }
+.date-picker-popup .spinner .button {
+	-fx-background-color: -fx-secondary-color;
+	-fx-background-radius: 0;
+	-fx-border-radius: 0;
+	-fx-border-width: 0;
+	-fx-cursor: hand;
+}
 .date-picker-popup .spinner .button .left-arrow,
 .date-picker-popup .spinner .button .right-arrow {
 	-fx-background-color: white;
+}
+
+.mybutton {
+	-fx-border-color: #303030;
+	-fx-background-color: -fx-secondary-color;
+	-fx-background-radius: 4;
+	-fx-border-radius: 4;
+	-fx-border-width: 2;
+	-fx-text-fill: -fx-light-grey-color;
+	-fx-font-size: 16px;
+	-fx-font-family: "Roboto";
+	-fx-padding: 5;
+	-fx-min-width: 100;
+	-fx-min-height: 40;
+}
+
+.mybutton:hover {
+	-fx-border-color: -fx-primary-color;
+	-fx-text-fill: -fx-primary-color;
+}
+
+.progress-indicator {
+	-fx-background-color: -fx-secondary-color;
+	-fx-border-width: 0;
+	-fx-progress-color: -fx-primary-color;
 }
