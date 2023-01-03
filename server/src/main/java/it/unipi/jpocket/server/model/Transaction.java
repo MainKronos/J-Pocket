@@ -1,23 +1,15 @@
 package it.unipi.jpocket.server.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
-import org.springframework.beans.factory.annotation.Value;
-
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonIncludeProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
-import com.fasterxml.jackson.annotation.JsonValue;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name="transaction", schema="transaction")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Transaction{
 
 	@Id 
@@ -38,7 +30,7 @@ public class Transaction{
 
 	@ManyToOne(optional=false)
 	@JoinColumn(name = "user_id", nullable = false)
-	@JsonIncludeProperties("id")
+	@JsonIgnore
 	private User user;
 	
 	public Transaction(String title, Float amount, Date date, Integer type) {

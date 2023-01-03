@@ -1,10 +1,12 @@
 package it.unipi.jpocket.client;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 import it.unipi.jpocket.client.transaction.*;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
@@ -40,14 +42,24 @@ public class PrimaryController implements Initializable{
 	@FXML private TableColumn<Transaction,Date> DateCol;
 	@FXML private TableColumn<Transaction,InOutType> TypeCol;
 
-	private final TransactionList data = new TransactionList();
+	private TransactionList data;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		App.LOGGER.info("Start");
+		Utils.LOGGER.info("Start");
 
-		userTxt.textProperty().bind(App.user);
+		new Task<Void>() {
+			@Override
+			protected Void call() throws Exception {
+				Utils.LOGGER.info("Loading data");
+				data = new TransactionList(App.user_id.get());
+				return null;
+			}
+		}.run();
+			
+
+		userTxt.textProperty().bind(App.user_name);
 
 		TitleCol.prefWidthProperty().bind(TransactionTable.widthProperty().multiply(1/3f));
 		AmountCol.prefWidthProperty().bind(TransactionTable.widthProperty().multiply(1/8f));
@@ -77,7 +89,15 @@ public class PrimaryController implements Initializable{
 
 	@FXML
 	public void removeItem() {
-		data.remove(TransactionTable.getSelectionModel().getSelectedItem());
+		new Task<Void>() {
+			@Override
+			protected Void call() {
+				Utils.LOGGER.info("Removing item");
+				data.remove(TransactionTable.getSelectionModel().getSelectedItem());
+				return null;
+			}
+		}.run();
+		
 	}
 
 	@FXML
@@ -101,13 +121,20 @@ public class PrimaryController implements Initializable{
 
 		if(titleInput.getText().isEmpty() || amountInput.getValue().equals(Currency.ZERO) || dateInput.getValue() == null || typeInput.getValue() == null)
 			return;
-
-		data.add(new Transaction(
-			titleInput.getText(),
-			amountInput.getValue(),
-			dateInput.getValue(),
-			typeInput.getValue()
-		));
+		
+		new Task<Void>() {
+			@Override
+			protected Void call(){
+				Utils.LOGGER.info("Adding item");
+				data.add(
+					titleInput.getText(),
+					amountInput.getValue(),
+					dateInput.getValue(),
+					typeInput.getValue()
+				);
+				return null;
+			}
+		}.run();	
 
 		closeModal();
 	}

@@ -2,11 +2,7 @@ package it.unipi.jpocket.server.model;
 
 import java.util.List;
 import java.util.Random;
-
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
-
 import jakarta.persistence.*;
 
 
@@ -18,14 +14,14 @@ public class User{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name="username", nullable = false)
+	@Column(name="username", nullable = false, unique = true)
 	private String username;
 
 	@Column(name="password", nullable = false)
 	private String password;
 
 	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
-	@JsonIncludeProperties("id") // to avoid infinite recursion
+	@JsonIncludeProperties("id")
 	private List<Transaction> transactions;
 
 	public User(String username, String password) {
@@ -41,10 +37,6 @@ public class User{
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getUsername() {

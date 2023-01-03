@@ -1,6 +1,8 @@
 package it.unipi.jpocket.client;
 
 import javafx.application.Application;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.util.logging.Handler;
@@ -19,33 +22,38 @@ import java.util.logging.Logger;
  */
 public class App extends Application {
 
-	public static final StringProperty user = new SimpleStringProperty();
+	public static final StringProperty user_name = new SimpleStringProperty();
+	public static final IntegerProperty user_id = new SimpleIntegerProperty();
 
-    private static Scene scene;
-
-	public static final Logger LOGGER = Logger.getLogger("J-Pocket");
-	static {LOGGER.setLevel(Level.FINE);for (Handler handler : Logger.getLogger("").getHandlers()) {handler.setLevel(Level.ALL);}}
+	private static Scene scene;
 
     @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("login"));
+    public void start(Stage stage) {
+
+		scene = new Scene(loadFXML("login"));
+		
+        stage.setScene(scene);
 		stage.setTitle("J-Pocket");
 		stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/coin.png")));
-        stage.setScene(scene);
 		stage.sizeToScene();
         stage.show();
-		// stage.setMinWidth(stage.getWidth());
-        // stage.setMinHeight(stage.getHeight());
+		stage.setMinWidth(stage.getWidth());
+        stage.setMinHeight(stage.getHeight());
     }
 
-	private static Parent loadFXML(String fxml) throws IOException {
+	private static Parent loadFXML(String fxml) {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+		Parent ret = null;
+        try {
+			ret = fxmlLoader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return ret;
     }
 
-	public static void loadScene(String fxml) throws IOException {
-		scene.setRoot(loadFXML(fxml));
-		scene.getWindow().sizeToScene();
+	public static void switchToPrimary() {
+		scene.setRoot(loadFXML("primary"));
 	}
 		
 

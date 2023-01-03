@@ -27,11 +27,11 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane minHeight="810.0" minWidth="739.0" stylesheets="@assets/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.jpocket.client.PrimaryController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="810.0" minWidth="739.0" prefHeight="910.0" prefWidth="739.0" stylesheets="@assets/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.jpocket.client.PrimaryController">
    <children>
-      <BorderPane fx:id="gui" minHeight="810.0" minWidth="739.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="gui" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="810.0" minWidth="739.0" prefHeight="910.0" prefWidth="739.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <GridPane alignment="CENTER" hgap="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="50.0" BorderPane.alignment="CENTER">
+            <GridPane alignment="CENTER" hgap="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="810.0" prefWidth="739.0" vgap="50.0" BorderPane.alignment="CENTER">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" percentWidth="33.33" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" percentWidth="33.33" />
@@ -159,9 +159,9 @@
                      </columnResizePolicy>
                      <contextMenu>
                         <ContextMenu>
-                          <items>
-                            <MenuItem mnemonicParsing="false" onAction="#removeItem" text="Remove" />
-                          </items>
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#removeItem" text="Remove" />
+                           </items>
                         </ContextMenu>
                      </contextMenu>
                   </TableView>
@@ -172,17 +172,17 @@
             </GridPane>
          </center>
          <bottom>
-            <AnchorPane BorderPane.alignment="CENTER">
+            <AnchorPane maxHeight="100.0" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="739.0" prefHeight="100.0" prefWidth="739.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane maxHeight="60.0" minHeight="60.0" prefHeight="60.0" styleClass="card" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                  <VBox alignment="TOP_CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Pane maxHeight="60.0" maxWidth="739.0" minHeight="60.0" minWidth="739.0" prefHeight="60.0" prefWidth="739.0" styleClass="card" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <VBox alignment="TOP_CENTER" maxHeight="100.0" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="739.0" prefHeight="100.0" prefWidth="739.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#openModal" styleClass="add-btn">
+                        <Button maxHeight="70.0" maxWidth="70.0" minHeight="70.0" minWidth="70.0" mnemonicParsing="false" onAction="#openModal" prefHeight="70.0" prefWidth="70.0" styleClass="add-btn">
                            <font>
                               <Font name="Roboto" size="40.0" />
                            </font>
                            <graphic>
-                              <SVGPath content="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z" fill="#121212" strokeLineCap="ROUND" strokeLineJoin="ROUND" />
+                              <SVGPath content="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z" fill="#121212" />
                            </graphic>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -200,18 +200,18 @@
       <VBox fx:id="modal" alignment="CENTER" fillWidth="false" styleClass="modal" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <GridPane hgap="10.0" styleClass="card" vgap="10.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" />
-                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" />
+                  <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" vgrow="NEVER" />
-              </rowConstraints>
+               </rowConstraints>
                <children>
                   <Label text="Title" />
                   <TextField fx:id="titleInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
@@ -227,11 +227,13 @@
                         <Button mnemonicParsing="false" onAction="#closeModal" styleClass="mybutton" text="Cancel">
                            <cursor>
                               <Cursor fx:constant="HAND" />
-                           </cursor></Button>
+                           </cursor>
+                        </Button>
                         <Button mnemonicParsing="false" onAction="#addItem" styleClass="mybutton" text="Submit">
                            <cursor>
                               <Cursor fx:constant="HAND" />
-                           </cursor></Button>
+                           </cursor>
+                        </Button>
                      </children>
                   </HBox>
                </children>

@@ -1,38 +1,27 @@
 package it.unipi.jpocket.client.transaction;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.Random;
+
+import it.unipi.jpocket.client.Utils;
+import it.unipi.jpocket.client.model.TransactionBean;
 
 public class Transaction {
 
+	private final Integer id;
 	private final String title;
 	private final Currency amount;
 	private final LocalDate date;
 	private final InOutType type;
-
-	private static final Random rnd = new Random();
 	
-	public Transaction(String title, float amount, LocalDate date, InOutType type) {
-		this.title = title;
-		this.amount = new Currency(amount);
-		this.date = date;
-		this.type = type;
-	}
-	public Transaction(String title, Currency amount, LocalDate date, InOutType type) {
-		this(title, amount.floatValue(), date, type);
-	}
 
-	// Solo in fase di test
-	public Transaction(){
-		this(
-			"Title " + rnd.nextInt(100), 
-			rnd.nextFloat() * 1000, 
-			LocalDateTime.ofInstant(Instant.ofEpochMilli(rnd.nextLong() % (new Date().getTime() - 1000000000) + 1000000000), ZoneId.systemDefault()).toLocalDate(),
-			rnd.nextBoolean() ? InOutType.INCOME : InOutType.EXPENSE);	
+	public Transaction(TransactionBean bean) {
+		this.id = bean.getId().intValue();
+		this.title = bean.getTitle();
+		this.amount = new Currency(bean.getAmount());
+		this.date = Utils.convertToLocalDate(bean.getDate());
+		this.type = bean.getType() == 0 ? InOutType.INCOME : InOutType.EXPENSE;
 	}
 
 	public String getTitle() {
@@ -50,5 +39,7 @@ public class Transaction {
 	public InOutType getType() {
 		return type;
 	}
-	
+	public Integer getId() {
+		return id;
+	}
 }
