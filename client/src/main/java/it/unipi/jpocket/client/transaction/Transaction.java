@@ -1,9 +1,6 @@
 package it.unipi.jpocket.client.transaction;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
-
 import it.unipi.jpocket.client.Utils;
 import it.unipi.jpocket.client.model.TransactionBean;
 
