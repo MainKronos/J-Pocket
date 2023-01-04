@@ -1,7 +1,9 @@
 package it.unipi.jpocket.client;
 
 import javafx.application.Application;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -20,6 +22,9 @@ public class App extends Application {
 	public static final StringProperty user_name = new SimpleStringProperty();
 	public static final IntegerProperty user_id = new SimpleIntegerProperty();
 
+	private static final DoubleProperty minWidth = new SimpleDoubleProperty();
+	private static final DoubleProperty minHeight = new SimpleDoubleProperty();
+
 	private static Scene scene;
 
     @Override
@@ -31,9 +36,10 @@ public class App extends Application {
 		stage.setTitle("J-Pocket");
 		stage.getIcons().add(new Image(App.class.getResourceAsStream("assets/coin.png")));
 		stage.sizeToScene();
+		stage.minWidthProperty().bind(minWidth);
+		stage.minHeightProperty().bind(minHeight);
         stage.show();
-		stage.setMinWidth(stage.getWidth());
-        stage.setMinHeight(stage.getHeight());
+		setMinSize(stage.getWidth(), stage.getHeight());
     }
 
 	private static Parent loadFXML(String fxml) {
@@ -49,6 +55,13 @@ public class App extends Application {
 
 	public static void switchToPrimary() {
 		scene.setRoot(loadFXML("primary"));
+		scene.getWindow().sizeToScene();
+		setMinSize(scene.getWindow().getWidth(), scene.getWindow().getHeight());
+	}
+
+	private static void setMinSize(double width, double height) {
+		minWidth.set(width);
+		minHeight.set(height);	
 	}
 		
 

@@ -27,11 +27,11 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="810.0" minWidth="739.0" prefHeight="910.0" prefWidth="739.0" stylesheets="@assets/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.jpocket.client.PrimaryController">
+<AnchorPane stylesheets="@assets/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unipi.jpocket.client.PrimaryController">
    <children>
-      <BorderPane fx:id="gui" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="810.0" minWidth="739.0" prefHeight="910.0" prefWidth="739.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="gui" maxHeight="-Infinity" maxWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <GridPane alignment="CENTER" hgap="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="810.0" prefWidth="739.0" vgap="50.0" BorderPane.alignment="CENTER">
+            <GridPane alignment="CENTER" hgap="50.0" maxHeight="900.0" maxWidth="900.0" vgap="50.0" BorderPane.alignment="CENTER">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" percentWidth="33.33" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" percentWidth="33.33" />
@@ -147,7 +147,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <TableView fx:id="TransactionTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
+                  <TableView fx:id="TransactionTable" prefHeight="400.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
                      <columns>
                         <TableColumn fx:id="TitleCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" resizable="false" text="Title" />
                         <TableColumn fx:id="AmountCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" resizable="false" text="Amount" />
@@ -172,10 +172,10 @@
             </GridPane>
          </center>
          <bottom>
-            <AnchorPane maxHeight="100.0" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="739.0" prefHeight="100.0" prefWidth="739.0" BorderPane.alignment="CENTER">
+            <AnchorPane maxHeight="100.0" maxWidth="1.7976931348623157E308" minHeight="100.0" prefHeight="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane maxHeight="60.0" maxWidth="739.0" minHeight="60.0" minWidth="739.0" prefHeight="60.0" prefWidth="739.0" styleClass="card" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                  <VBox alignment="TOP_CENTER" maxHeight="100.0" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="739.0" prefHeight="100.0" prefWidth="739.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Pane maxHeight="60.0" minHeight="60.0" prefHeight="60.0" styleClass="card" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <VBox alignment="TOP_CENTER" maxHeight="100.0" maxWidth="1.7976931348623157E308" minHeight="100.0" prefHeight="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Button maxHeight="70.0" maxWidth="70.0" minHeight="70.0" minWidth="70.0" mnemonicParsing="false" onAction="#openModal" prefHeight="70.0" prefWidth="70.0" styleClass="add-btn">
                            <font>

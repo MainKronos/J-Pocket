@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 
 import com.google.gson.Gson;
 
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -125,8 +126,9 @@ public class LoginController implements Initializable{
 			e.printStackTrace();
 		}
 
-		App.switchToPrimary();
-
+		Platform.runLater(() -> {
+			App.switchToPrimary();
+		});
 		return true;
 		
 	}
