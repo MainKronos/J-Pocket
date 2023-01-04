@@ -27,7 +27,7 @@ public class AuthController {
 		if(user == null) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Username o password errati");
 		}else {
-			return ResponseEntity.ok("{id: " + user.getId() + "}");
+			return ResponseEntity.ok("{\"id\": " + user.getId() + "}");
 		}
 		
 	}
@@ -40,7 +40,7 @@ public class AuthController {
 		if(user == null) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Username già esistente");
 		}else {
-			return ResponseEntity.ok("{id: " + user.getId() + "}");
+			return ResponseEntity.ok("{\"id\": " + user.getId() + "}");
 		}
 	}
 }

@@ -19,11 +19,10 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-	public static final StringProperty user_name = new SimpleStringProperty();
-	public static final IntegerProperty user_id = new SimpleIntegerProperty();
-
-	private static final DoubleProperty minWidth = new SimpleDoubleProperty();
-	private static final DoubleProperty minHeight = new SimpleDoubleProperty();
+	public static final StringProperty user_name = new SimpleStringProperty("user"); // default value
+	public static final IntegerProperty user_id = new SimpleIntegerProperty(1); // default value
+	private static final DoubleProperty minWidth = new SimpleDoubleProperty(500); // default value
+	private static final DoubleProperty minHeight = new SimpleDoubleProperty(500); // default value
 
 	private static Scene scene;
 
@@ -53,6 +52,9 @@ public class App extends Application {
 		return ret;
     }
 
+	/**
+	 * Cambia la scena in quella principale
+	 */
 	public static void switchToPrimary() {
 		scene.setRoot(loadFXML("primary"));
 		scene.getWindow().sizeToScene();

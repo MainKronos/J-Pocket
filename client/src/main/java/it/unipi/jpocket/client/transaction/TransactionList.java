@@ -64,28 +64,31 @@ public class TransactionList extends SimpleListProperty<Transaction>{
 		loadData();
 	}
 
-	private void loadData() throws IOException {
+	private void loadData() {
+		try {
+			HttpURLConnection con = (HttpURLConnection) new URL("http://localhost:8080/api/user/"+user_id+"/transaction").openConnection();
+			con.setRequestMethod("GET");
+			con.setRequestProperty("Content-Type", "application/json; utf-8");
+			con.setRequestProperty("Accept", "application/json");
 
-		HttpURLConnection con = (HttpURLConnection) new URL("http://localhost:8080/api/user/"+user_id+"/transaction").openConnection();
-		con.setRequestMethod("GET");
-		con.setRequestProperty("Content-Type", "application/json; utf-8");
-		con.setRequestProperty("Accept", "application/json");
-
-		StringBuffer content = new StringBuffer();
-		try(BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))){
-			String inputLine;
-			while ((inputLine = in.readLine()) != null) {
-				content.append(inputLine);
+			StringBuffer content = new StringBuffer();
+			try(BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))){
+				String inputLine;
+				while ((inputLine = in.readLine()) != null) {
+					content.append(inputLine);
+				}
+				in.close();
+				con.disconnect();
 			}
-			in.close();
-			con.disconnect();
-		}
 
-		Gson gson = new Gson();
+			Gson gson = new Gson();
 
-		TransactionBean[] beans = gson.fromJson(content.toString(), TransactionBean[].class);
-		for(TransactionBean t : beans) {
-			super.add(new Transaction(t));
+			TransactionBean[] beans = gson.fromJson(content.toString(), TransactionBean[].class);
+			for(TransactionBean t : beans) {
+				super.add(new Transaction(t));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 

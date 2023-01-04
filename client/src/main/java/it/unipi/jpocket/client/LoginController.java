@@ -51,8 +51,6 @@ public class LoginController implements Initializable{
 				return null;
 			}
 		}).start();
-		
-		
 	}
 
 	@FXML
@@ -70,6 +68,13 @@ public class LoginController implements Initializable{
 	}
 	
 
+	/** 
+	 * Prende un URL, si connette ad esso, invia una richiesta POST con un body JSON, e poi legge la risposta
+	 * dal server.
+	 * 
+	 * @param url http://localhost:8080/login
+	 * @return Il valore di ritorno è true se la connessione è andata a buon fine, false altrimenti.
+	 */
 	private boolean connect(URL url){
 		HttpURLConnection con;
 		try {
@@ -126,7 +131,7 @@ public class LoginController implements Initializable{
 			e.printStackTrace();
 		}
 
-		Platform.runLater(() -> {
+		Platform.runLater(() -> { // run on JavaFX thread
 			App.switchToPrimary();
 		});
 		return true;

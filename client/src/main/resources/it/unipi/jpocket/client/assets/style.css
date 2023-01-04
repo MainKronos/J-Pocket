@@ -120,12 +120,15 @@
 	-fx-border-radius: 45%;
 }
 	
-
 .modal {
 	-fx-background-color: rgba(0, 0, 0, 0.5);
 }
 
-.text-field {
+.text-field, .text-field:active, .text-field:focused,
+.spinner, 
+.choice-box,
+.date-picker,
+.context-menu {
 	-fx-background-color: #212121;
 	-fx-text-fill: #a1a1a1;
 	-fx-font-size: 16px;
@@ -134,33 +137,50 @@
 	-fx-border-radius: 4;
 	-fx-border-color: #303030;
 	-fx-border-width: 1;
-	-fx-padding: 5;
+	
 }
 
-.text-field:active, .text-field:focused, .text-field:hover,
-.text-field .spinner, .date-picker, .date-picker .spinner {
-	-fx-background-color: #212121;
+.context-menu {
+	-fx-padding: 0;
+}
+.context-menu .menu-item{
+	-fx-cursor: hand;
+}
+
+.context-menu .menu-item{
+	-fx-background-color: transparent;
+}
+.context-menu .menu-item .label {
+	-fx-background-color: transparent;
 	-fx-text-fill: #a1a1a1;
 	-fx-font-size: 16px;
 	-fx-font-family: "Roboto";
-	-fx-background-radius: 4;
-	-fx-border-radius: 4;
-	-fx-border-color: #303030;
-	-fx-border-width: 1;
+}
+.context-menu .menu-item:hover .label,
+.context-menu .menu-item:active .label {
+	-fx-text-fill: -fx-primary-color;
 }
 
-.increment-arrow-button, .decrement-arrow-button {
-	-fx-background-color: -fx-secondary-color;
-	-fx-text-fill: #a1a1a1;
-	-fx-font-size: 12px;
-	cursor: hand;
+.progress-indicator .spinner,
+.spinner .text-field, 
+.date-picker .text-field {
+	-fx-border-width: 0;
 }
 
+.text-field:hover, .choice-box:hover,
+.spinner:hover, .date-picker:hover {
+	-fx-border-color: -fx-primary-color;
+}
+
+.choice-box,
+.spinner .increment-arrow-button, 
+.spinner .decrement-arrow-button,
 .date-picker .arrow-button {
-	-fx-background-color: -fx-secondary-color;
+	-fx-background-color: transparent;
 	-fx-background-radius: 0;
 	-fx-cursor: hand;
 }
+
 .date-picker .arrow-button:hover {
 	-fx-background-color: -fx-secondary-color;
 }

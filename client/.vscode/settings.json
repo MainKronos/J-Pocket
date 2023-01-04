@@ -1,3 +1,5 @@
 {
-	"java.configuration.updateBuildConfiguration": "automatic"
+	"java.configuration.updateBuildConfiguration": "automatic",
+	"docwriter.progress.trackFunctions": true,
+	"docwriter.progress.trackClasses": false
 }

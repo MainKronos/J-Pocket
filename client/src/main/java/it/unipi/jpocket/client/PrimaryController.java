@@ -84,6 +84,9 @@ public class PrimaryController implements Initializable{
 		typeInput.getItems().addAll(InOutType.values());
 		dateInput.setShowWeekNumbers(false);
 
+		typeInput.setValue(InOutType.EXPENSE);
+		dateInput.setValue(Utils.convertToLocalDate(new Date()));
+
 	}
 
 	@FXML
@@ -110,8 +113,8 @@ public class PrimaryController implements Initializable{
 		modal.setVisible(false);
 		titleInput.clear();
 		amountInput.getValueFactory().setValue(Currency.ZERO);
-		dateInput.setValue(null);
-		typeInput.setValue(null);
+		typeInput.setValue(InOutType.EXPENSE);
+		dateInput.setValue(Utils.convertToLocalDate(new Date()));
 		gui.setEffect(null);
 	}
 
