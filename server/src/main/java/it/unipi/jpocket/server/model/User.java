@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 
 @Entity
@@ -13,7 +13,8 @@ import jakarta.persistence.*;
 public class User{
 
 	@Id 
-	@GeneratedValue(strategy=GenerationType.UUID)
+	@GeneratedValue
+	@Column(columnDefinition="BINARY(16)")
 	private UUID id;
 
 	@Column(name="username", nullable = false, unique = true)

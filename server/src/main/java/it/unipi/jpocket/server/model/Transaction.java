@@ -3,9 +3,11 @@ package it.unipi.jpocket.server.model;
 import java.util.Date;
 import java.util.Random;
 
+import javax.persistence.*;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.*;
+
 
 @Entity
 @Table(name="transaction", schema="transaction")
