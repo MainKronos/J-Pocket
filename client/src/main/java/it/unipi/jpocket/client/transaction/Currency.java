@@ -85,4 +85,11 @@ public class Currency extends Number{
 	public Currency negate() {
 		return new Currency(-this.amount);
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Currency) {
+			return ((Currency) obj).amount == this.amount;
+		}
+		return super.equals(obj);
+	}
 }

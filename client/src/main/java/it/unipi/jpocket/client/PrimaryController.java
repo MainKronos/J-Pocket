@@ -61,7 +61,7 @@ public class PrimaryController implements Initializable{
 		userTxt.textProperty().bind(App.user_name);
 
 		TitleCol.prefWidthProperty().bind(TransactionTable.widthProperty().multiply(1/3f));
-		AmountCol.prefWidthProperty().bind(TransactionTable.widthProperty().multiply(1/8f));
+		AmountCol.prefWidthProperty().bind(TransactionTable.widthProperty().multiply(1/7f));
 		DateCol.prefWidthProperty().bind(TransactionTable.widthProperty().multiply(1/3f));
 		TypeCol.prefWidthProperty().bind(TransactionTable.widthProperty().multiply(1/8f));
 
@@ -114,6 +114,7 @@ public class PrimaryController implements Initializable{
 		titleInput.clear();
 		amountInput.getValueFactory().setValue(Currency.ZERO);
 		typeInput.setValue(InOutType.EXPENSE);
+		dateInput.setValue(null);
 		dateInput.setValue(Utils.convertToLocalDate(new Date()));
 		gui.setEffect(null);
 	}
