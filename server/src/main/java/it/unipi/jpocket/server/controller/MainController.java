@@ -1,6 +1,10 @@
 package it.unipi.jpocket.server.controller;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,29 +40,71 @@ public class MainController {
 	}
 
 	@GetMapping("/user/{user_id}")
-	public @ResponseBody User getUser(@PathVariable Integer user_id) {
-		return userRepository.findById(user_id).get();
+	public @ResponseBody ResponseEntity<Object> getUser(@PathVariable UUID user_id) throws Exception {
+		try{
+			User user = userRepository.findById(user_id).get();
+			return ResponseEntity.ok(user);
+		}catch(java.util.NoSuchElementException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Utente non trovato");
+		}
 	}
 
 	@GetMapping("/user/{user_id}/transaction")
-	public @ResponseBody Iterable<Transaction> getTransactions(@PathVariable Integer user_id) {
-		return transactionRepository.findByUserId(user_id);
+	public @ResponseBody ResponseEntity<Object> getTransactions(@PathVariable UUID user_id) throws Exception {
+		try{
+			User user = userRepository.findById(user_id).get();
+			Iterable<Transaction> transactions = transactionRepository.findByUser(user);
+			return ResponseEntity.status(HttpStatus.CREATED).body(transactions);
+		}catch(java.util.NoSuchElementException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Utente non trovato");
+		}
 	}
 
 	@PostMapping("/user/{user_id}/transaction")
-	public @ResponseBody Transaction addTransaction(@PathVariable Integer user_id, @RequestBody Transaction transaction) {
-		transaction.setUser(userRepository.findById(user_id).get());
-		return transactionRepository.save(transaction);
+	public @ResponseBody ResponseEntity<Object> addTransaction(@PathVariable UUID user_id, @RequestBody Transaction transaction) {
+		try{
+			User user = userRepository.findById(user_id).get();
+			transaction.setUser(user);
+			return ResponseEntity.ok(transactionRepository.save(transaction));
+		}catch(java.util.NoSuchElementException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Utente non trovato");
+		}
 	}
 
 	@GetMapping("/user/{user_id}/transaction/{transaction_id}")
-	public @ResponseBody Transaction getTransaction(@PathVariable Integer user_id, @PathVariable Integer transaction_id) {
-		return transactionRepository.findByUserIdAndId(user_id, transaction_id);
-		
+	public @ResponseBody ResponseEntity<Object> getTransaction(@PathVariable UUID user_id, @PathVariable Integer transaction_id) {
+		try{
+			User user = userRepository.findById(user_id).get();
+			try{
+				Transaction transaction = transactionRepository.findById(transaction_id).get();
+				if(transaction.getUser().getId().compareTo(user.getId()) != 0) {
+					throw new java.util.NoSuchElementException();
+				}
+				return ResponseEntity.ok(transaction);
+			}catch(java.util.NoSuchElementException e) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Transazione non trovata");
+			}			
+		}catch(java.util.NoSuchElementException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Utente non trovato");
+		}	
 	}
 
 	@DeleteMapping("/user/{user_id}/transaction/{transaction_id}")
-	public @ResponseBody void deleteTransaction(@PathVariable Integer user_id, @PathVariable Integer transaction_id) {
-		transactionRepository.delete(transactionRepository.findByUserIdAndId(user_id, transaction_id));
+	public @ResponseBody ResponseEntity<Object> deleteTransaction(@PathVariable UUID user_id, @PathVariable Integer transaction_id) {
+		try{
+			User user = userRepository.findById(user_id).get();
+			try{
+				Transaction transaction = transactionRepository.findById(transaction_id).get();
+				if(transaction.getUser().getId().compareTo(user.getId()) != 0) {
+					throw new java.util.NoSuchElementException();
+				}
+				transactionRepository.delete(transaction);
+				return ResponseEntity.noContent().build();
+			}catch(java.util.NoSuchElementException e) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Transazione non trovata");
+			}			
+		}catch(java.util.NoSuchElementException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Utente non trovato");
+		}
 	}
 }

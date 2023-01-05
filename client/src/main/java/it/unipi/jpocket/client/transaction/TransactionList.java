@@ -9,6 +9,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,9 +27,9 @@ public class TransactionList extends SimpleListProperty<Transaction>{
 	private SimpleObjectProperty<Currency> income = new SimpleObjectProperty<>();
 	private SimpleObjectProperty<Currency> expense = new SimpleObjectProperty<>();
 
-	private final int user_id;
+	private final UUID user_id;
 
-	public TransactionList(int user_id) throws IOException {
+	public TransactionList(UUID user_id) throws IOException {
 		super(FXCollections.observableArrayList());
 
 		this.user_id = user_id;

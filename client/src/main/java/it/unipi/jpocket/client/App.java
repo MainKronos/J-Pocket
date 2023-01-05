@@ -2,9 +2,9 @@ package it.unipi.jpocket.client;
 
 import javafx.application.Application;
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.UUID;
 
 /**
  * JavaFX App
@@ -20,7 +21,7 @@ import java.io.IOException;
 public class App extends Application {
 
 	public static final StringProperty user_name = new SimpleStringProperty("user"); // default value
-	public static final IntegerProperty user_id = new SimpleIntegerProperty(1); // default value
+	public static final ObjectProperty<UUID> user_id = new SimpleObjectProperty<UUID>(UUID.fromString("31000000-0000-0000-0000-000000000000")); // default value
 	private static final DoubleProperty minWidth = new SimpleDoubleProperty(500); // default value
 	private static final DoubleProperty minHeight = new SimpleDoubleProperty(500); // default value
 

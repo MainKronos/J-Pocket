@@ -2,6 +2,8 @@ package it.unipi.jpocket.server.model;
 
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import jakarta.persistence.*;
 
@@ -11,8 +13,8 @@ import jakarta.persistence.*;
 public class User{
 
 	@Id 
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	@GeneratedValue(strategy=GenerationType.UUID)
+	private UUID id;
 
 	@Column(name="username", nullable = false, unique = true)
 	private String username;
@@ -35,11 +37,11 @@ public class User{
 		this.password = "Password " + rnd.nextInt(1000);
 	}
 
-	public Integer getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

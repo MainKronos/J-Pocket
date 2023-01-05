@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 import com.google.gson.Gson;
 
@@ -120,12 +121,13 @@ public class LoginController implements Initializable{
 			con.disconnect();
 
 			App.user_name.set(usernameInput.getText());
-			App.user_id.set(((Double)gson.fromJson(content.toString(), Map.class).get("id")).intValue());
+			App.user_id.set(UUID.fromString(gson.fromJson(content.toString(), Map.class).get("id").toString()));
 			
 		} catch (IOException e) {
-			
-			errorTxt.setText(e.getMessage());
-			loadingIndicator.setVisible(false);
+			Platform.runLater(() -> { // run on JavaFX thread
+				errorTxt.setText(e.getMessage());
+				loadingIndicator.setVisible(false);
+			});
 			return false;
 		} catch (Exception e) {
 			e.printStackTrace();

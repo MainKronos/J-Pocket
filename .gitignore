@@ -1,6 +1,2 @@
 *.class
-client/target/classes/it/unipi/jpocket/client/primary.fxml
-client/target/classes/it/unipi/jpocket/client/secondary.fxml
-client/target/classes/it/unipi/jpocket/client/assets/coin.png
-client/target/classes/it/unipi/jpocket/client/assets/Roboto.ttf
-client/target/classes/it/unipi/jpocket/client/assets/style.css
+client/target

@@ -1,8 +1,10 @@
 package it.unipi.jpocket.server;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -17,6 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import it.unipi.jpocket.server.controller.AuthController;
@@ -38,13 +41,15 @@ public class AuthControllerTests {
 	@MockBean
 	private UserService userService;
 
+	private static final ObjectMapper mapper = new ObjectMapper();
+
 	private static User testUser;
 
 	@BeforeAll
 	static void init() {
 		// Creo un utente di test
 		testUser = new User("TestUsername", "TestPassword");
-		testUser.setId(1234);
+		testUser.setId(UUID.randomUUID());
 	}
 
 	@Test
@@ -60,8 +65,6 @@ public class AuthControllerTests {
 		Mockito.when(userService.signup(testCredentials.get("username"), testCredentials.get("password")))
 			.thenReturn(testUser);
 		
-		ObjectMapper mapper = new ObjectMapper();
-		
 		// Converto le credenziali di test in un JSON
 		String jsonCredentials = mapper.writeValueAsString(testCredentials);
 		
@@ -72,10 +75,11 @@ public class AuthControllerTests {
 		
 		String jsonResponse = mockMvc.perform(requestBuilder).andReturn().getResponse().getContentAsString();
 
-		Map<String, Integer> response = mapper.readValue(jsonResponse, Map.class);
+		Map<String, UUID> response = mapper.readValue(jsonResponse, new TypeReference<Map<String, UUID>>(){});
 
 		// Verifico che l'id ritornato sia uguale a quello dell'utente di test
-		assertEquals(response.get("id"), testUser.getId());
+		assertTrue(response.containsKey("id"));
+		assertTrue(response.get("id").compareTo(testUser.getId()) == 0);
 	}
 
 	@Test
@@ -103,9 +107,10 @@ public class AuthControllerTests {
 		
 		String jsonResponse = mockMvc.perform(requestBuilder).andReturn().getResponse().getContentAsString();
 
-		Map<String, Integer> response = mapper.readValue(jsonResponse, Map.class);
+		Map<String, UUID> response = mapper.readValue(jsonResponse, new TypeReference<Map<String, UUID>>(){});
 
 		// Verifico che l'id ritornato sia uguale a quello dell'utente di test
-		assertEquals(response.get("id"), testUser.getId());	
+		assertTrue(response.containsKey("id"));
+		assertTrue(response.get("id").compareTo(testUser.getId()) == 0);
 	}
 }
