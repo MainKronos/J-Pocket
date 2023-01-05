@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>it.unipi.jpocket</groupId>
 	<artifactId>server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>Server</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
