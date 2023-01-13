@@ -1,4 +1,11 @@
 # J-Pocket
+
+Progetto per l'esame di Programmazione Avanzata (anno 2022/23) del corso di Ingegneria Informatica (Triennale) dell'università di Pisa (classe L-8).
+
+Valutazione: 33/30
+
+## Descrizione
+
 J-Pocket è una semplice applicazione desktop multi utente per la gestione di un portafoglio virtuale, dove è possibile tenere traccia di tutte le proprie transazioni. L'applicazione tiene traccia di tutte le transazioni in entrata e in uscita, permettendo di visualizzare i totali di entrambi i tipi di transazioni, e di visualizzare il totale del portafoglio.
 
 ## Funzionalità
